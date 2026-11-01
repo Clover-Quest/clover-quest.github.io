@@ -4,7 +4,8 @@
  * Bei neuen Versionen CACHE erhöhen.
  */
 // v2: Aufnahmeprüfung (neue Sprites), neues App-Icon
-const CACHE = 'clover-quest-v2';
+// v3: neue Zauber-Effekte (Tornado, Windspeer, Blitze, Feuer, Wasser, Erde), alte Caches aufräumen
+const CACHE = 'clover-quest-v3';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (event) => {
