@@ -1,8 +1,8 @@
 {
   "name": "Clover Quest",
   "short_name": "Clover Quest",
-  "description": "Privates Black-Clover-Fanprojekt: 2D-Action-RPG mit Grimoire-Magie",
-  "start_url": "./",
+  "description": "Privates Black-Clover-Fanprojekt: düsteres Action-RPG mit Grimoire-Magie",
+  "start_url": "./3d/",
   "scope": "./",
   "display": "fullscreen",
   "orientation": "landscape",

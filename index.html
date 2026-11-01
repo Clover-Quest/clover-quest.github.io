@@ -74,9 +74,10 @@
         .portrait-ok #rotate { display: none; }
       }
     </style>
-    <script type="module" crossorigin src="./assets/main-DBjePa1r.js"></script>
-    <link rel="modulepreload" crossorigin href="./assets/hageMap-RIoBQv0b.js">
+    <script type="module" crossorigin src="./assets/main-tNUt0k5h.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/hageMap-BzqM7Zmf.js">
     <link rel="modulepreload" crossorigin href="./assets/phaser-0YPJO2g1.js">
+    <link rel="modulepreload" crossorigin href="./assets/spellCaster-DStICOyO.js">
   </head>
   <body>
     <div id="game"></div>
@@ -88,6 +89,12 @@
     </div>
     <script>
       document.getElementById('portrait-ok').addEventListener('click', () => document.documentElement.classList.add('portrait-ok'));
+      // Die neue 3D-Fassung ist der Standard. Die 2D-Fassung bleibt erreichbar mit ?2d=1
+      // (und wird für die Aufnahmeprüfung mit ?exam=1 geöffnet, bis es sie in 3D gibt).
+      (function () {
+        var p = new URLSearchParams(location.search);
+        if (!p.has('2d') && !p.has('exam') && !p.has('grimoire')) location.replace('./3d/');
+      })();
     </script>
   </body>
 </html>

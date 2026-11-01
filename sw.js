@@ -5,8 +5,9 @@
  */
 // v2: Aufnahmeprüfung (neue Sprites), neues App-Icon
 // v3: neue Zauber-Effekte (Tornado, Windspeer, Blitze, Feuer, Wasser, Erde), alte Caches aufräumen
-const CACHE = 'clover-quest-v3';
-const CORE = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
+// v4: neue 3D-Fassung unter ./3d/ (Standard), Seiten werden je Adresse zwischengespeichert
+const CACHE = 'clover-quest-v4';
+const CORE = ['./', './index.html', './3d/', './3d/index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(CORE)).then(() => self.skipWaiting()));
@@ -26,14 +27,19 @@ self.addEventListener('fetch', (event) => {
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
 
   if (req.mode === 'navigate') {
+    // Seiten: zuerst aus dem Netz (Updates kommen an), offline die zuletzt geladene Fassung derselben Adresse
+    const url = new URL(req.url);
+    const key = url.pathname.endsWith('/') ? url.pathname + 'index.html' : url.pathname;
     event.respondWith(
       fetch(req)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((c) => c.put('./index.html', copy));
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE).then((c) => c.put(key, copy));
+          }
           return res;
         })
-        .catch(() => caches.match('./index.html')),
+        .catch(() => caches.match(key).then((hit) => hit || caches.match('./3d/index.html')).then((hit) => hit || caches.match('./index.html'))),
     );
     return;
   }
