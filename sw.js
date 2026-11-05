@@ -7,7 +7,7 @@
 // v3: neue Zauber-Effekte (Tornado, Windspeer, Blitze, Feuer, Wasser, Erde), alte Caches aufräumen
 // v4: neue 3D-Fassung unter ./3d/ (Standard), Seiten werden je Adresse zwischengespeichert
 // v5: Grimoire-System Etappe A (vier Fähigkeiten, Ultimate, Verwandlung, Spielstand Version 3), alte Dateien aufräumen
-const CACHE = 'clover-quest-v5';
+const CACHE = 'clover-quest-v6';
 const CORE = ['./', './index.html', './3d/', './3d/index.html', './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png', './icons/apple-touch-icon.png'];
 
 self.addEventListener('install', (event) => {

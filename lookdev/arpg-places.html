@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Clover Quest – Orte in 3D</title>
+    <meta name="description" content="Vorschau der Turmhalle (Grimoire-Zeremonie) und des Prüfungsgeländes (Aufnahmeprüfung) des Clover-Quest-Fanprojekts" />
+    <style>
+      :root { color-scheme: dark; --ink: #efe6d2; --panel: rgba(14, 12, 22, 0.72); --gold: #d9b45a; }
+      html, body { margin: 0; height: 100%; overflow: hidden; background: #0b0e15; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; }
+      #app { position: fixed; inset: 0; }
+      canvas { display: block; }
+      .hud { position: fixed; left: max(10px, env(safe-area-inset-left)); top: max(10px, env(safe-area-inset-top)); font: 500 13px -apple-system, system-ui, sans-serif; color: var(--ink); background: var(--panel); padding: 7px 10px; border-radius: 9px; pointer-events: none; max-width: 70vw; }
+      .hud b { color: var(--gold); font-weight: 650; }
+      .hud .stats { opacity: 0.8; font: 11px ui-monospace, Menlo, monospace; margin-top: 3px; }
+      .pick { position: fixed; right: max(10px, env(safe-area-inset-right)); bottom: max(10px, env(safe-area-inset-bottom)); display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; max-width: 80vw; }
+      .pick button { font: 600 13px -apple-system, system-ui, sans-serif; color: var(--ink); background: var(--panel); border: 1px solid rgba(217, 180, 90, 0.6); border-radius: 8px; padding: 7px 9px; }
+      .pick button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+      .pick button:active { background: rgba(217, 180, 90, 0.25); }
+      body.nohud .hud, body.nohud .pick { display: none; }
+    </style>
+    <script type="module" crossorigin src="../assets/places-DxkFpADL.js"></script>
+    <link rel="modulepreload" crossorigin href="../assets/modulepreload-polyfill-B5Qt9EMX.js">
+    <link rel="modulepreload" crossorigin href="../assets/three-r53RiT9d.js">
+    <link rel="modulepreload" crossorigin href="../assets/squads-B3n1JG9J.js">
+    <link rel="modulepreload" crossorigin href="../assets/BufferGeometryUtils-CGRiZJmQ.js">
+    <link rel="modulepreload" crossorigin href="../assets/arena-D0V-lhO0.js">
+  </head>
+  <body>
+    <div id="app"></div>
+    <div class="hud"><div><b>Orte</b> · <span id="label">…</span></div><div class="stats" id="stats"></div></div>
+    <div class="pick" id="pick"></div>
+  </body>
+</html>
